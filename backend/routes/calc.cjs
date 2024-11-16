@@ -20,23 +20,22 @@ router
     equation = equation.replace("}", "");
     equation = equation.slice(7);
     equation = equation.replaceAll('"', "");
-    equation = equation.replaceAll("^", '**');
-    //TODO: add solver for x variables
+    
     
     let calculated = 0;
       try { 
       // Evaluate the expression 
       if (equation.includes("=") && equation.includes("x")){
-       // equalSign = equation.indexOf("=");
         let splitEquation = equation.split("=");
-        const lhs = algebra.parse(splitEquation[0].trim()); //
-        const rhs = algebra.parse(splitEquation[1].trim()); //
+        const lhs = algebra.parse(splitEquation[0].trim()); 
+        const rhs = algebra.parse(splitEquation[1].trim());
         var combinedEquation = new Equation(lhs, rhs);
         var solution = combinedEquation.solveFor("x");
+        console.log(`Result: ${solution.toString()}`);
         return res.status(200).json({result: solution.toString()}); 
-        //IF ERROR DO 2*X
       }
       else{
+        equation = equation.replaceAll("^", '**');
         calculated = eval(equation); // eval converts string to evaluated equation
         console.log(`Result: ${calculated}`); //delete when frontend works
         return res.status(200).json({result: calculated});
