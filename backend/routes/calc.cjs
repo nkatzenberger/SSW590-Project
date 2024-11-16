@@ -1,7 +1,9 @@
 // Import the express router as shown in the lecture code
 // Note: please do not forget to export the router!
 
-import express from 'express';
+const express =  require('express');
+const algebra = require('algebra.js');
+const { Equation, Expression } = algebra;
 //import path from 'path';
 //const __dirname = new URL('.', import.meta.url).pathname;
 const router = express.Router();
@@ -24,13 +26,25 @@ router
     let calculated = 0;
       try { 
       // Evaluate the expression 
-      calculated = eval(equation); // eval converts string to evaluated equation
-      console.log(`Result: ${calculated}`); //delete when frontend works
-      return res.status(200).json({result: calculated});
+      if (equation.includes("=") && equation.includes("x")){
+       // equalSign = equation.indexOf("=");
+        let splitEquation = equation.split("=");
+        const lhs = algebra.parse(splitEquation[0].trim()); //
+        const rhs = algebra.parse(splitEquation[1].trim()); //
+        var combinedEquation = new Equation(lhs, rhs);
+        var solution = combinedEquation.solveFor("x");
+        return res.status(200).json({result: solution.toString()}); 
+        //IF ERROR DO 2*X
+      }
+      else{
+        calculated = eval(equation); // eval converts string to evaluated equation
+        console.log(`Result: ${calculated}`); //delete when frontend works
+        return res.status(200).json({result: calculated});
+    }
   } catch (error) { 
     return res.status(200).json({result: "Invalid equation. Please enter a valid mathematical expression."})
   } 
   });
   
 
-export default router;
+module.exports = router;
