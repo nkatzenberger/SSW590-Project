@@ -17,7 +17,7 @@
 
     <h1>Simple Calculator</h1>
     <form id="calc-form" action = "http://localhost:3000/?", method = "POST">
-        <input type="text" id="num1" name="num1">
+        <input type="text" id="num1" name="num1" placeholder="Enter Equation">
 <!-- 
         <input type="radio" id="add" name="operator" value="add"> <label for="add">Add</label>
         <input type="radio" id="subtract" name="operator" value="subtract"> <label for="subtract">Subtract</label>
@@ -28,7 +28,46 @@
 -->
         <button type="submit">Submit</button>
     </form>
-
+    <div class="keypad">
+    <button onclick="insertNumber('(')">(</button> 
+    <button onclick="insertNumber(')')">)</button> 
+    <button onclick="insertNumber('%')">Modulus (%)</button> 
+    <button onclick="insertNumber('^')">^</button> 
+    <button onclick="insertNumber('1')">1</button> 
+    <button onclick="insertNumber('2')">2</button> 
+    <button onclick="insertNumber('3')">3</button>
+    
+     <button onclick="insertNumber('4')">4</button> 
+     <button onclick="insertNumber('5')">5</button> 
+     <button onclick="insertNumber('6')">6</button> 
+      
+     <button onclick="insertNumber('7')">7</button> 
+     <button onclick="insertNumber('8')">8</button> 
+     <button onclick="insertNumber('9')">9</button> 
+     
+     <button onclick="insertNumber('0')">0</button> 
+     
+     <button onclick="insertNumber('x')">x(variable)</button> 
+     
+    <button onclick="clearTextbox()">C
+    </div>
+    <div class = "sidepad">
+        <button onclick="insertNumber('+')">+</button> 
+        <button onclick="insertNumber('-')">-</button>
+        <button onclick="insertNumber('*')">*</button> 
+        <button onclick="insertNumber('/')">/</button> 
+        <button onclick="insertNumber('=')">=</button> 
+    </div>
+    <script>
+        function insertNumber(num){
+            var textbox = document.getElementById("num1");
+            textbox.value += num
+        }
+        function clearTextbox(){
+            var textbox = document.getElementById("num1");
+            textbox.value = "";
+        }
+    </script>
     <div id="result" style="background-color:red; color:white; font-size: 22pt; margin-top:2em"></div>
 
     <script>

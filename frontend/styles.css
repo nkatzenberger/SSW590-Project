@@ -1,3 +1,27 @@
 body{
     background-color:aliceblue;
 }
+.container { 
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.keypad { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px; 
+    max-width: 150px; 
+    margin: 20px;
+ } 
+ .sidePad{
+    display: grid; 
+    grid-template-columns: repeat(1fr); 
+    gap: 10px; 
+    max-width: 50px; 
+    margin: 20px auto;
+    }
+.keypad, .sidePad button { 
+    padding: 20px; 
+    font-size: 18px; 
+    cursor: pointer;}
+
