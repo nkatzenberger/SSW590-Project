@@ -1,4 +1,4 @@
-import routes from './calc.js';
+import routes from './calc.cjs';
 
 const constructorMethod = (app) => {
   app.use('', routes);

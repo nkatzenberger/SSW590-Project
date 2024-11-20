@@ -1,5 +1,5 @@
 // This file should set up the express server as shown in the lecture code
-
+//run "node app.js" in terminal
 import express from 'express';
 import cors from 'cors';
 const app = express();
