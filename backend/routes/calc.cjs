@@ -4,8 +4,7 @@
 const express =  require('express');
 const algebra = require('algebra.js');
 const { Equation, Expression } = algebra;
-//import path from 'path';
-//const __dirname = new URL('.', import.meta.url).pathname;
+
 const router = express.Router();
 router
   .route('/')
